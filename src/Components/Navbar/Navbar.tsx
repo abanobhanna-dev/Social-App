@@ -17,9 +17,9 @@ export default function Navbar() {
     navigate("/login");
   }
 
-  const iconClass = "text-3xl text-slate-700 hover:text-blue-600 transition";
-  const logoutClass = "cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-medium transition shadow-sm";
-  const authLinkClass = "text-gray-700 hover:text-blue-600 font-medium transition";
+  const iconClass = "text-3xl text-[#0d6e6e] hover:text-[#0a5a5a] transition";
+  const logoutClass = "cursor-pointer bg-[#0d6e6e] hover:bg-[#0a5a5a] text-white px-5 py-2 rounded-lg font-medium transition shadow-sm";
+  const authLinkClass = "text-gray-700 hover:text-[#0d6e6e] font-medium transition";
 
   return (
     <nav className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
@@ -28,7 +28,7 @@ export default function Navbar() {
 
           {/* Left: Logo */}
           <div className="md:justify-self-start">
-            <Link to="/home" className="text-2xl font-bold text-blue-600 hover:text-blue-700 transition">
+            <Link to="/home" className="text-2xl font-bold text-[#0d6e6e] hover:text-[#0a5a5a] transition">
               SocialApp
             </Link>
           </div>
@@ -48,7 +48,6 @@ export default function Navbar() {
                 <Link to="/ChangePassword" title="Settings" className="hidden md:block">
                   <IoSettingsSharp className={iconClass} />
                 </Link>
-
               </>
             )}
           </div>
@@ -60,22 +59,20 @@ export default function Navbar() {
                 <button onClick={LogOut} className={logoutClass}>
                   LogOut
                 </button>
-              )
-                :
-                (
-                  <>
-                    <Link to="/register" className={authLinkClass}>
-                      Register
-                    </Link>
-                    <Link to="/login" className={logoutClass}>
-                      Login
-                    </Link>
-                  </>
-                )}
+              ) : (
+                <>
+                  <Link to="/register" className={authLinkClass}>
+                    Register
+                  </Link>
+                  <Link to="/login" className={logoutClass}>
+                    Login
+                  </Link>
+                </>
+              )}
             </div>
 
             <button
-              className="md:hidden text-gray-700 text-2xl"
+              className="md:hidden text-[#0d6e6e] text-2xl"
               onClick={() => setIsOpen(!isOpen)}
             >
               {isOpen ? <FaXmark /> : <FaBars />}
@@ -88,10 +85,12 @@ export default function Navbar() {
           <div className="flex flex-col items-start gap-4 mt-4 pt-4 pb-2 md:hidden border-t border-gray-100">
             {userLogin ? (
               <>
-                <Link to="/ChangePassword" title="Settings"
-                  className="flex items-center gap-3 text-gray-700
-                hover:text-blue-600 font-medium transition"
-                  onClick={() => setIsOpen(false)}>
+                <Link
+                  to="/ChangePassword"
+                  title="Settings"
+                  className="flex items-center gap-3 text-gray-700 hover:text-[#0d6e6e] font-medium transition"
+                  onClick={() => setIsOpen(false)}
+                >
                   <IoSettingsSharp className="text-2xl" />
                   Settings
                 </Link>
