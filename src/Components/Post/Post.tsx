@@ -206,13 +206,23 @@ export default function Post({ post, isPostDetails = false, }: {
                   Cancel
                 </button>
 
+
+
                 <button
-                  onClick={() => updateMutate()}
-                  disabled={isUpdating || !editBody.trim()}
-                  className="px-6 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-full text-sm font-semibold shadow-md shadow-blue-600/30 active:scale-95 cursor-pointer transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none"
-                >
+                  onClick={() => {
+                    if (!editBody.trim()) {
+                      toast.error("اكتب نص للبوست الأول عشان تقدر تعدّل");
+                      return;
+                    }
+                    updateMutate();
+                  }}
+                  disabled={isUpdating}
+                  className="px-6 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-full text-sm font-semibold shadow-md shadow-blue-600/30 active:scale-95 cursor-pointer transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none">
                   {isUpdating ? "Saving..." : "Save"}
                 </button>
+
+
+
               </div>
             </div>)
             :
